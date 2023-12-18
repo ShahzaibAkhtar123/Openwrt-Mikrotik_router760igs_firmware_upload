@@ -1,0 +1,33 @@
+The script is present in this folder with the name of loader_sh but when you use for unix you use it as loader.sh for shell script.
+
+Save this file in the root folder : nano /root/tftp/loader.sh.
+
+In the tftp folder palce the openwrt mikrotik v23.05.0 rc3 file also..
+
+Before run this command put the ethernet cable in the wan port of mikrotik router and unplug the power source...now press the reset button.
+
+Now run this shell script loader.sh with the command ./loader.sh.
+
+It run dnsmasq (Dnsmasq is a lightweight and versatile DNS (Domain Name System) forwarder and DHCP (Dynamic Host Configuration Protocol) server.)---> if you get error check the port 69 mainly the http services run at that time so you need to close these services and run again the ./loader.sh.
+
+Now power on the mikrotik router while pressing the reset button..dont release the button until first beep on the router.
+The dnsmasq upload the intram firmware to the mikrotik router through tftp the logs are display on the screen...
+
+
+After the firmware upload to the router you need to ping 192.168.1.1 on the web browser the Luci inteface open for the mikrotik router.
+
+Dont close the Luci interface.
+
+First you go to the system--> flashfirmware part here you update the openwrt-ramips-mt7621-mikrotik_routerboard-760igs-squashfs-sysupgrade file that is present in the mt7621 folder.
+
+Now check the packages of strongswam..
+
+you can check it by ssh login to the router in a terminal ssh root@192.168.1.1..
+after ssh login you are on the router terminal now write this command opkg list-installed.
+you can see all packages that are installed on your router..
+
+For more clearification check these links..
+https://openwrt.org/toh/mikrotik/rb760igs
+(this is important
+
+Warning: use openwrt-23.05.0-rc3 for the first step of the TFTP installation, as the other RCs and the final 23.05.0 version cannot be netbooted due to too high entry point addresses)
